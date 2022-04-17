@@ -1,0 +1,48 @@
+.contact {
+    background-color: $white-color;
+    padding: 35px 30px;
+
+    @include add-prefix(border-radius, 4px);
+
+    &__form {
+
+        input,
+        textarea {
+            @extend %w-100;
+            @include add-prefix(border, 1px solid transparent);
+            @include add-prefix(border-radius, 4px);
+            background-color: rgba($body-color, $alpha: 1);
+            color: $text-color;
+            padding: 20px 30px;
+
+            &::placeholder {
+                color: $text-color;
+            }
+
+            &:focus-within {
+                outline: none;
+                @include add-prefix(border-color, rgba($theme-color, $alpha:.15));
+            }
+        }
+
+        input {
+            @extend %mb-30;
+        }
+
+        textarea {
+            @extend %mb-40;
+        }
+
+        .default-btn {
+            background-color: $theme-color;
+            color: $white-color;
+
+            @include hover {}
+        }
+    }
+}
+
+.form-massage {
+    color: $white-color;
+    @extend %mt-10;
+}

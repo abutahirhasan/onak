@@ -1,0 +1,106 @@
+.about-section {
+    // margin-top: -70%;
+
+    // @include breakpoint(sm) {
+    //     margin-top: -50%;
+    // }
+
+    // @include breakpoint(md) {
+    //     margin-top: -40%;
+    // }
+
+    // @include breakpoint(lg) {
+    //     margin-top: -20%;
+    // }
+
+    // @include breakpoint(xxl) {
+    //     margin-top: -12%;
+    // }
+}
+
+.about {
+    @extend %p-30;
+    @include add-prefix(border-radius, 4px);
+    background-color: $white-color;
+
+    &__thumb {
+        @extend %text-center;
+
+
+        .default-btn {
+            transform: translateY(-50%);
+        }
+    }
+
+    &__author {
+        @extend %mb-25;
+
+        @include breakpoint(lg) {
+            @include add-prefix(border-bottom, 1px solid rgba($title-color, $alpha:.1));
+        }
+
+
+
+
+    }
+
+    &__description {
+        line-height: 1.625;
+        @extend %mb-35;
+
+        #more {
+            display: none;
+        }
+    }
+}
+
+.information {
+    &__item {
+        @extend %w-100;
+        @extend %flex;
+
+        &:not(:last-child) {
+            @extend %mb-10;
+        }
+    }
+
+    &__title {
+        @extend %d-inline-block;
+        color: $title-color;
+        width: 45%;
+
+        @include breakpoint(sm) {
+            width: 35%;
+        }
+
+        @include breakpoint(md) {
+            width: 26%;
+        }
+
+    }
+
+    &__text {
+        @extend %d-inline-block;
+        width: calc(100% - 45%);
+        @extend %p-rel;
+
+        @include breakpoint(sm) {
+            width: calc(100% - 35%);
+        }
+
+        @include breakpoint(md) {
+            width: calc(100% - 26%);
+        }
+
+        &:after {
+            @extend %p-abs;
+            content: ":";
+            left: -10px;
+            top: 0;
+
+            @include breakpoint(md) {
+                left: -30px;
+            }
+        }
+    }
+}

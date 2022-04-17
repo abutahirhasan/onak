@@ -1,0 +1,114 @@
+.skill {
+    background-color: $white-color;
+    @extend %p-40;
+    @include add-prefix(border-radius, 4px);
+
+    &__item {
+
+        &:not(:last-child) {
+            @extend %mb-35;
+        }
+
+        .progress-title {
+            @extend %mb-0;
+            @include font-size(18px);
+            font-weight: 400;
+            color: $title-color;
+            font-family: $title-font;
+        }
+
+        .progress-indicator {
+            @extend %m-0;
+        }
+
+        .ab-progress-bar {
+            background-color: $theme-color;
+        }
+
+        .progress-indicator-inner {
+            background-color: transparent;
+            color: $theme-color;
+            @include font-size(18px);
+            font-family: $title-font;
+        }
+
+        .progress-bar-wrap {
+            background-color: $body-color;
+            border: none;
+        }
+
+        .down-arrow {
+            display: none;
+        }
+    }
+}
+
+
+//Expertise
+
+.expertise {
+    background-color: $white-color;
+    @extend %p-40;
+    @include add-prefix(border-radius, 4px);
+
+    &__item {
+        &:not(:last-child) {
+            @include add-prefix(border-bottom, 1px solid rgba($title-color, $alpha:0.1));
+        }
+
+        padding-block: 12px;
+
+        p {
+            @extend %mb-0;
+            @include font-size(18px);
+            line-height: 1.667;
+        }
+    }
+}
+
+.video {
+    height: 280px;
+
+    @include breakpoint(md) {
+        height: 350px;
+    }
+
+    @include breakpoint(lg) {
+        height: 405px;
+    }
+
+    iframe {
+        @extend %w-100;
+        @extend %h-100;
+    }
+}
+
+.file {
+    background-color: $white-color;
+    @extend %p-40;
+    @include add-prefix(border-radius, 4px);
+
+
+    &__item {
+        &:not(:last-child) {
+            @include add-prefix(border-bottom, 1px solid rgba($title-color, $alpha:0.1));
+        }
+
+        gap: 20px;
+
+        padding-block: 12px;
+
+        p {
+            @extend %mb-0;
+            @include font-size(18px);
+            line-height: 1.667;
+        }
+    }
+
+    &__icon {
+        svg {
+            @include font-size(60px);
+            color: #d04423;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+
+.footer-section {
+    @include background-cover;
+    background-color: $theme-color;
+    background-blend-mode: color-burn;
+}
+
+.footer {
+    &__logo {
+        @extend %mb-30;
+        @extend %d-inline-block;
+    }
+
+    .social {
+        @extend %justify-center;
+        @extend %mb-20;
+
+        &__link {
+            background-color: $white-color;
+
+            svg {
+                color: $theme-color;
+            }
+        }
+    }
+
+    &__copyright {
+        color: $white-color;
+        @extend %mb-0;
+        @extend %text-center;
+    }
+}

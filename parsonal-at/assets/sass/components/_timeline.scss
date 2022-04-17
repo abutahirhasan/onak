@@ -1,0 +1,90 @@
+.timeline {
+    &__wrapper {
+        @extend %p-rel;
+
+        @include breakpoint(sm) {
+            &:after {
+                position: absolute;
+                content: "";
+                @include add-prefix(border-radius, 4px);
+                top: 0;
+                left: 0;
+                width: 10px;
+                height: 100%;
+                background-color: $white-color;
+                z-index: -1;
+            }
+        }
+
+
+    }
+
+    &__item {
+        @extend %p-rel;
+        @include add-prefix(border-radius, 4px);
+        background-color: $white-color;
+        padding: 30px;
+
+        @include breakpoint(sm) {
+            margin-left: 30px;
+            padding: 30px 50px;
+        }
+
+        &:not(:last-child) {
+            @extend %mb-25;
+        }
+
+        &::after,
+        &::before {
+            @include breakpoint(sm) {
+                position: absolute;
+                content: "";
+                @include add-prefix(transform, translateY(-50%));
+                top: 50%;
+            }
+        }
+
+        &::after {
+            @include arrow(left, 15px, $white-color);
+            left: -10px;
+        }
+
+        &::before {
+            left: -35px;
+            @include box(20px);
+            @include add-prefix(border, 4px solid $white-color);
+            @include add-prefix(border-radius, 50%);
+            background-color: $body-color;
+            z-index: 2;
+        }
+    }
+
+    &__title {
+        @extend %mb-15;
+    }
+
+    &__date {
+        gap: 20px;
+    }
+
+    &__date_btn {
+        @extend %p-rel;
+        @include add-prefix(border-radius, 2px);
+        background-color: $theme-color;
+        color: $white-color;
+        line-height: 30px;
+        padding: 0 .75rem;
+
+        &::after {
+            @extend %p-abs;
+            @include arrow(left, 8px, $theme-color);
+            @include add-prefix(transform, translateY(-50%));
+            left: -6px;
+            top: 50%;
+        }
+    }
+
+    &__details {
+        @extend %mb-0;
+    }
+}

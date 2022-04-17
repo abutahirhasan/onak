@@ -1,0 +1,57 @@
+.sidebar {
+    background-color: $white-color;
+
+    &__item {
+        padding: 40px 30px;
+
+        &:not(:last-child) {
+            @include add-prefix(border-bottom, 1px solid rgba($title-color, $alpha:.1));
+        }
+
+        &.py-30 {
+            padding-block: 30px;
+        }
+    }
+
+    &__item_top {
+        @extend %mb-25;
+
+        &-mb15 {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__chamber_name {
+        h6 {
+            @extend %mb-0;
+        }
+    }
+
+    &__chamber_map {
+        a {
+            @extend %d-inline-block;
+            @include font-size(14px);
+            @include add-prefix(border-radius, 2px);
+            background-color: $theme-color;
+            color: $white-color;
+            line-height: 24px;
+            padding-inline: .5rem;
+
+            @include hover {
+                transform: scale(1.03);
+            }
+        }
+    }
+
+    &__address_item {
+        &:not(:last-child) {
+            margin-bottom: 3px;
+        }
+    }
+
+    &__item_bottom {
+        p {
+            @extend %mb-0;
+        }
+    }
+}

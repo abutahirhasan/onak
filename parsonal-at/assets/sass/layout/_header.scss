@@ -1,0 +1,298 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+@mixin transPos($top, $right, $bottom, $left, $transX, $transY) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+    transform: translate($transX, $transY);
+}
+
+@mixin object($width, $height, $bg) {
+    width: $width;
+    height: $height;
+    background: $bg;
+}
+
+/*** Color Variables ***/
+$header-bg: #5661f2;
+$nav-bg: #46b2f0;
+$pink: #fa6c98;
+$aqua: #79edfc;
+$accent: #fff;
+
+.header {
+    padding: 38px 0;
+    transition: all 0.3s;
+    background-color: $theme-color;
+    // @extend %p-abs;
+    @extend %w-100;
+    top: 0;
+    z-index: 3;
+
+    &__nav {
+        @extend %flex;
+        @extend %justify-between;
+
+        @include breakpoint(lg) {
+            flex-direction: column;
+            align-items: center;
+
+            .header__brand {
+                margin-bottom: 20px;
+            }
+        }
+
+    }
+
+    &__logo {
+        @include breakpoint(max-sm) {
+            max-width: 80%;
+        }
+    }
+
+    &-fixed {
+        background-color: $theme-color;
+        padding: 25px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        box-shadow: 0 4px 30px -5px rgba(#000, 0.2);
+
+        @include breakpoint(lg) {
+            top: -70px;
+        }
+    }
+
+
+
+}
+
+
+/*** Menu Styles ***/
+.menu {
+    justify-content: flex-end;
+
+    @include breakpoint(lg) {
+        border-top: 1px solid rgba($white-color, 0.2);
+    }
+
+    &__list {
+        @extend %p-abs;
+        height: 0;
+        width: 100vw;
+        background-color: $theme-color;
+        left: 0;
+        @include add-prefix(transition, all 0.3s cubic-bezier(.68, -0.55, .27, 1.55));
+        overflow-y: auto;
+        z-index: 4;
+
+
+        @include breakpoint(lg) {
+            position: inherit;
+            height: auto;
+            width: auto;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: transparent;
+            margin-top: 20px;
+        }
+
+        &.showMenu {
+            height: 100vh;
+
+            .menu__item {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+    }
+
+    &__item {
+        opacity: 0;
+        visibility: hidden;
+        @extend %text-center;
+        @include add-prefix(transition, all 0.3s cubic-bezier(.68, -0.55, .27, 1.55));
+        padding: .5rem;
+
+        @include breakpoint(lg) {
+            text-align: left;
+
+            &:not(:first-child) {
+                margin-left: 20px;
+            }
+
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__link {
+        @extend %d-inline-block;
+        color: $white-color;
+        @include add-prefix(transition, $transition);
+
+        &:hover {
+            color: $white-color;
+        }
+
+        @include breakpoint(lg) {
+
+            &-active,
+            &:hover {
+                @include add-prefix(transition, $transition);
+                position: relative;
+
+
+                &:after {
+                    position: absolute;
+                    content: "";
+                    @include arrow(down, 5px, $white-color);
+
+                    bottom: -5px;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                }
+            }
+        }
+    }
+
+    &__toggle {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        @extend %mr-10;
+
+        @include breakpoint(lg) {
+            display: none;
+        }
+
+
+        &:hover .menu__icon_bar {
+            width: 25px;
+        }
+
+        &.closeMenu {
+            .menu__icon_bar {
+                width: 25px;
+
+                &:first-child {
+                    transform: translateY(7px) rotate(45deg);
+                }
+
+                &:nth-child(2) {
+                    transform: scale(0);
+                }
+
+                &:last-child {
+                    transform: translateY(-7px) rotate(-45deg);
+                }
+            }
+        }
+    }
+
+    &__icon_bar {
+        height: 2px;
+        background-color: $white-color;
+        transition: 0.3s ease-in-out;
+
+        &:first-child {
+            width: 25px;
+        }
+
+        &:nth-child(2) {
+            width: 20px;
+            margin: 5px 0;
+        }
+
+        &:last-child {
+            width: 15px;
+        }
+    }
+}
+
+
+/*=-=-=-======< Section header start here >==========-=-=-=-*/
+.section-header {
+    @extend %flex;
+    @extend %align-items-center;
+    @extend %mb-25;
+    @include add-prefix(border-radius, 4px);
+    background-color: $white-color;
+
+    @include breakpoint(lg) {
+        margin-bottom: 35px;
+    }
+
+    .header-icon {
+        @extend %d-inline-block;
+        @extend %p-rel;
+        @extend %mr-20;
+        @include box(60px);
+        @include add-prefix(border-radius, 4px);
+
+        display: grid;
+        place-items: center;
+        background-color: $theme-color;
+
+        &:after {
+            @extend %p-abs;
+            @include add-prefix(transform, translateY(-50%));
+            @include arrow(right, 15px, $theme-color);
+            right: -10px;
+            top: 50%;
+
+        }
+    }
+
+    .header-text {
+        h4 {
+            @extend %mb-0;
+            line-height: 60px;
+        }
+    }
+}
+
+/*=-=-=-======< Section header end here >==========-=-=-=-*/
+
+
+
+/*=-=-=-======< Page header start here >==========-=-=-=-*/
+.page-header {
+    background-color: $theme-color;
+    background-blend-mode: color-burn;
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    @include breakpoint(lg) {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    h2 {
+        @include font-size(44px);
+        color: $white-color;
+    }
+
+    .breadcrumb {
+        margin-bottom: 0;
+    }
+
+    .breadcrumb-item {
+        a {
+            color: $white-color;
+        }
+
+        &.active {
+            color: $text-color;
+            text-decoration: line-through;
+        }
+    }
+
+}
+
+/*=-=-=-======< Page header end here >==========-=-=-=-*/
